@@ -9,7 +9,11 @@ const Book = ({ book }) => {
     <div>
       <div className="flex px-3 py-3">
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img className="h-52 w-full object-contain" src={image} alt="Sunset in the mountains" />
+          <img
+            className="h-52 w-full object-contain bg-[#dad7d7] p-4 border rounded-md"
+            src={image}
+            alt="Sunset in the mountains"
+          />
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{bookName}</div>
             <p className="text-gray-700 text-base">{first50Word}</p>
@@ -25,7 +29,7 @@ const Book = ({ book }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 

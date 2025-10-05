@@ -8,7 +8,7 @@ const Books = () => {
   return (
     <>
       <div>books {booksData.length}</div>
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 ">
         {booksData.map((book) => (
           <Book book={book} key={book.bookId}></Book>
         ))}
