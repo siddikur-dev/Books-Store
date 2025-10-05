@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="container mx-auto bg-white">
       {/* Navbar */}
       <div className="navbar bg-base-100 shadow-sm px-4 md:px-10">
         {/* Left: Logo */}
@@ -77,7 +77,6 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-
     </div>
   );
 };
