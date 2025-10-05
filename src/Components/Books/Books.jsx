@@ -4,11 +4,10 @@ import Book from "../Book/Book";
 
 const Books = () => {
   const booksData = useLoaderData();
-  console.log(booksData);
   return (
     <>
-      <div>books {booksData.length}</div>
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 ">
+      <h2 className="text-3xl font-bold text-center my-5">Books </h2>
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 p-4  ">
         {booksData.map((book) => (
           <Book book={book} key={book.bookId}></Book>
         ))}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   return (
@@ -14,9 +15,9 @@ const Navbar = () => {
         <div className="hidden md:flex flex-none">
           <ul className="menu menu-horizontal px-1 text-base font-medium">
             <li>
-              <a className="font-semibold text-green-600 border border-green-600 rounded-md">
+              <Link to={"/"} className="font-semibold text-green-600 border border-green-600 rounded-md">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
               <a className="hover:text-green-600">Listed Books</a>
