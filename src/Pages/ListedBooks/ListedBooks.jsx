@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { getStoredBook } from "../../Utility/addToDB";
 import ReadBook from "../../Components/Book/ReadBook";
+import useBooks from "../../hooks/useBooks";
 const ListedBooks = () => {
   //sort set readList Book Data
   const [sort, setSort] = useState("");
 
   //state set readList Book Data
   const [readList, setReadList] = useState([]);
-  const booksData = useLoaderData();
+  //get data from custom hook useBooks
+  const { books } = useBooks();
+  //   console.log(books);
   useEffect(() => {
     const storedBook = getStoredBook();
-    const myReadList = booksData.filter((book) =>
-      storedBook.includes(book.bookId)
-    );
+    const myReadList = books.filter((book) => storedBook.includes(book.bookId));
+    console.log(myReadList);
     setReadList(myReadList);
-  }, []);
+  }, [books]);
   //sort function
   const handleSort = (type) => {
     const sortedList = [...readList];
@@ -31,24 +32,38 @@ const ListedBooks = () => {
     setReadList(sortedList);
   };
   return (
-    <>
-      <details className="dropdown">
-        <summary className="btn m-1">Sort By: {sort ? sort : ""}</summary>
-        <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-          <li>
-            <p onClick={() => handleSort("pages")}>Pages</p>
-          </li>
-          <li>
-            <p onClick={() => handleSort("rating")}>Ratings</p>
-          </li>
-        </ul>
-      </details>
+    <div className="my-8 container mx-auto">
+      {/* Sort Button */}
+      <div className="flex justify-center items-center py-4">
+        <details className="dropdown">
+          <summary className="btn bg-blue-500 text-white hover:bg-blue-600 px-6 rounded-lg">
+            Sort By: {sort ? sort : "Select"}
+          </summary>
+          <ul className="menu dropdown-content bg-white rounded-lg z-[1] w-44 p-2 shadow-md mt-2">
+            <li>
+              <button
+                onClick={() => handleSort("pages")}
+                className="hover:bg-blue-100 rounded-md py-1"
+              >
+                Pages
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleSort("rating")}
+                className="hover:bg-blue-100 rounded-md py-1"
+              >
+                Ratings
+              </button>
+            </li>
+          </ul>
+        </details>
+      </div>
       <Tabs>
         <TabList>
           <Tab>My Read List</Tab>
           <Tab>My WishList</Tab>
         </TabList>
-
         <TabPanel>
           <div className="container mx-auto p-4 ">
             {readList.map((book) => (
@@ -60,7 +75,7 @@ const ListedBooks = () => {
           <h2>My WishList Content</h2>
         </TabPanel>
       </Tabs>
-    </>
+    </div>
   );
 };
 
