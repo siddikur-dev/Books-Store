@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoredDB } from "../../Utility/addToDB";
 
 const BookDetails = () => {
   const { bookDetails } = useParams();
@@ -8,11 +9,26 @@ const BookDetails = () => {
   const bookData = useLoaderData();
   const singleBook = bookData.find((book) => book.bookId === bokId);
   //   destructure singleBook Object
-  const { bookName, author, image, category, rating, review, tags,publisher,yearOfPublishing,totalPages } =
-    singleBook;
-
+  const {
+    bookName,
+    author,
+    image,
+    category,
+    rating,
+    review,
+    tags,
+    publisher,
+    yearOfPublishing,
+    totalPages,
+    bookId
+  } = singleBook;
   //split review text
   const first30Word = review.split(" ").slice(0, 30).join(" ") + "...";
+
+  // Mark As Read Function
+  const handleMarkAsRead = (id) => {
+    addToStoredDB(id);
+  };
   return (
     <div>
       <div className="container mx-auto px-4 py-10 flex flex-col md:flex-row gap-10 items-center">
@@ -61,13 +77,15 @@ const BookDetails = () => {
           {/* Info Table */}
           <div className="space-y-1 text-gray-700">
             <p>
-              <span className="font-semibold">Number of Pages:</span> {totalPages}
+              <span className="font-semibold">Number of Pages:</span>{" "}
+              {totalPages}
             </p>
             <p>
               <span className="font-semibold">Publisher:</span> {publisher}
             </p>
             <p>
-              <span className="font-semibold">Year of Publishing:</span> {yearOfPublishing}
+              <span className="font-semibold">Year of Publishing:</span>{" "}
+              {yearOfPublishing}
             </p>
             <p>
               <span className="font-semibold">Rating:</span> {rating}
@@ -76,8 +94,11 @@ const BookDetails = () => {
 
           {/* Buttons */}
           <div className="flex gap-4 pt-4">
-            <button className="btn bg-white border-gray-300 hover:bg-gray-100">
-              Read
+            <button
+              onClick={() => handleMarkAsRead(bookId)}
+              className="btn bg-white border-gray-300 hover:bg-gray-100"
+            >
+              Mark as Read
             </button>
             <button className="btn bg-[#00bfa6] text-white hover:bg-[#00a68f]">
               Wishlist
