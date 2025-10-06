@@ -15,12 +15,17 @@ const Navbar = () => {
         <div className="hidden md:flex flex-none">
           <ul className="menu menu-horizontal px-1 text-base font-medium">
             <li>
-              <Link to={"/"} className="font-semibold text-green-600 border border-green-600 rounded-md">
+              <Link
+                to={"/"}
+                className="font-semibold text-green-600 border border-green-600 rounded-md"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <a className="hover:text-green-600">Listed Books</a>
+              <Link to={"/listedBooks"} className="hover:text-green-600">
+                Listed Books
+              </Link>
             </li>
             <li>
               <a className="hover:text-green-600">Pages to Read</a>
