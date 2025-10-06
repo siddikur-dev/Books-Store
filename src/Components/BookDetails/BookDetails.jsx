@@ -1,13 +1,23 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router";
+import { useParams } from "react-router";
 import { addToStoredDB } from "../../Utility/addToDB";
+import useBooks from "../../hooks/useBooks";
 
 const BookDetails = () => {
   const { bookDetails } = useParams();
+
+  //get data from custom hook useBooks
+  const { books } = useBooks();
   // string to convert number id number
-  const bokId = parseInt(bookDetails);
-  const bookData = useLoaderData();
-  const singleBook = bookData.find((book) => book.bookId === bokId);
+  const bookDetailsId = parseInt(bookDetails);
+  console.log("books", books, "bookDetails", bookDetailsId);
+  // const books = useLoaderData();
+  const singleBook = books.find((book) => book.bookId === bookDetailsId);
+
+  // const singleBook = books.filter((book) =>
+  //   bookDetailsId.includes(book.bookId)
+  // );
+  console.log("singleBook", singleBook);
   //   destructure singleBook Object
   const {
     bookName,
@@ -20,10 +30,10 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
     totalPages,
-    bookId
+    bookId,
   } = singleBook;
   //split review text
-  const first30Word = review.split(" ").slice(0, 30).join(" ") + "...";
+  // const first30Word = review.split(" ").slice(0, 30).join(" ") + "...";
 
   // Mark As Read Function
   const handleMarkAsRead = (id) => {
@@ -57,7 +67,7 @@ const BookDetails = () => {
           <div className="text-gray-600 leading-relaxed">
             <p>
               <span className="font-semibold text-gray-900">Review :</span>{" "}
-              {first30Word}
+              {/* {first30Word} */}h
             </p>
           </div>
 

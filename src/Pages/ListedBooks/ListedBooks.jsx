@@ -17,7 +17,6 @@ const ListedBooks = () => {
   useEffect(() => {
     const storedBook = getStoredBook();
     const myReadList = books.filter((book) => storedBook.includes(book.bookId));
-    console.log(myReadList);
     setReadList(myReadList);
   }, [books]);
   //sort function
