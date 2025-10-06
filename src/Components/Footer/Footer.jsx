@@ -2,9 +2,14 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
-      <h2>This is a footer</h2>
-    </div>
+    <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4 mt-28 ">
+      <aside>
+        <p>
+          Copyright © {new Date().getFullYear()} - All right reserved by Books
+          Store.
+        </p>
+      </aside>
+    </footer>
   );
 };
 

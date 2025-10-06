@@ -12,6 +12,7 @@ export const router = createBrowserRouter([
     path: "/",
     Component: Root,
     errorElement: <ErrorPage></ErrorPage>,
+    hydrateFallbackElement: <p>Loading...</p>,
     children: [
       {
         index: true,
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/listedBooks",
+        loader: () => fetch(`./booksData.json`),
         Component: ListedBooks,
       },
     ],
