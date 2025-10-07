@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUser, FaLocationDot, FaBookOpen } from "react-icons/fa6";
+import { useNavigate } from "react-router";
 
 const ReadBook = ({ book, handleRemoveReadBook }) => {
   const {
@@ -15,10 +16,16 @@ const ReadBook = ({ book, handleRemoveReadBook }) => {
     bookId,
   } = book;
 
+  //navigate to listedBook
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col md:flex-row items-center gap-6 p-6 border rounded-2xl shadow-sm bg-white hover:shadow-md transition my-5">
       {/* Left Image */}
-      <div className="flex-shrink-0">
+      <div
+        onClick={() => navigate(`/books/${bookId}`)}
+        className="flex-shrink-0 cursor-pointer"
+      >
         <img
           src={image}
           alt={bookName}

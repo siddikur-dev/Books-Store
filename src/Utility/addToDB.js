@@ -1,4 +1,4 @@
-import { Bounce, toast } from "react-toastify";
+import { Zoom, toast } from "react-toastify";
 // 🔹 Get ReadBook Data From LocalStorage
 const getStoredReadBook = () => {
   const storedBookSTR = localStorage.getItem("readList");
@@ -21,12 +21,12 @@ const addToReadLS = (id) => {
   const storedBookData = getStoredReadBook();
 
   if (storedBookData.includes(id)) {
-    toast.warn("This ID is already added!", {
+    toast.warn("This book is already added readList!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
       theme: "dark",
-      transition: Bounce,
+      transition: Zoom,
     });
   } else {
     storedBookData.push(id);
@@ -36,7 +36,7 @@ const addToReadLS = (id) => {
       position: "top-right",
       autoClose: 2000,
       theme: "colored",
-      transition: Bounce,
+      transition: Zoom,
     });
   }
 };
@@ -50,7 +50,7 @@ const addToWishlistLS = (id) => {
       autoClose: 3000,
       hideProgressBar: false,
       theme: "dark",
-      transition: Bounce,
+      transition: Zoom,
     });
   } else {
     storedBookData.push(id);
@@ -60,7 +60,7 @@ const addToWishlistLS = (id) => {
       position: "top-right",
       autoClose: 2000,
       theme: "colored",
-      transition: Bounce,
+      transition: Zoom,
     });
   }
 };
@@ -75,7 +75,7 @@ const removeReadBookLS = (id) => {
       position: "top-right",
       autoClose: 2000,
       theme: "dark",
-      transition: Bounce,
+      transition: Zoom,
     });
   } else {
     localStorage.setItem("readList", JSON.stringify(newStoredData));
@@ -83,7 +83,7 @@ const removeReadBookLS = (id) => {
       position: "top-right",
       autoClose: 2000,
       theme: "light",
-      transition: Bounce,
+      transition: Zoom,
     });
   }
 };
@@ -97,7 +97,7 @@ const removeWishlistLS = (id) => {
       position: "top-right",
       autoClose: 2000,
       theme: "dark",
-      transition: Bounce,
+      transition: Zoom,
     });
   } else {
     localStorage.setItem("wishList", JSON.stringify(newStoredData));
@@ -105,7 +105,7 @@ const removeWishlistLS = (id) => {
       position: "top-right",
       autoClose: 2000,
       theme: "light",
-      transition: Bounce,
+      transition: Zoom,
     });
   }
 };
