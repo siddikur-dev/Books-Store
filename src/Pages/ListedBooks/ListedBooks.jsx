@@ -12,8 +12,8 @@ const ListedBooks = () => {
   //state set readList Book Data
   const [readList, setReadList] = useState([]);
   //get data from custom hook useBooks
-  const { books } = useBooks();
-    // console.log(books);
+  const { books,loading,error } = useBooks();
+  // console.log(books);
   useEffect(() => {
     const storedBook = getStoredBook();
     const myReadList = books.filter((book) => storedBook.includes(book.bookId));
@@ -30,6 +30,19 @@ const ListedBooks = () => {
     }
     setReadList(sortedList);
   };
+
+  //loading spinner applied
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner text-blue-500"></span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p className="text-red-500 text-center">Error: {error.message}</p>;
+  }
   return (
     <div className="my-8 container mx-auto">
       {/* Sort Button */}

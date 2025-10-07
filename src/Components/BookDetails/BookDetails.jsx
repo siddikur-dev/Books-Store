@@ -5,11 +5,19 @@ import useBooks from "../../hooks/useBooks";
 
 const BookDetails = () => {
   const { bookDetails } = useParams();
-  const { books, loading } = useBooks();
+  const { books, loading, error } = useBooks();
   const bookDetailsId = parseInt(bookDetails);
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner text-blue-500"></span>
+      </div>
+    );
+  }
 
-  // if (loading) return <p>Loading...</p>;
-
+  if (error) {
+    return <p className="text-red-500 text-center">Error: {error.message}</p>;
+  }
   const singleBook = books.find((book) => book.bookId === bookDetailsId);
 
   if (!singleBook) return <p>No book found</p>;
