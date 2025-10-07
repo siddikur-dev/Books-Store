@@ -1,3 +1,5 @@
+import { Bounce, toast } from "react-toastify";
+
 const getStoredBook = () => {
   const storedBookSTR = localStorage.getItem("readList");
 
@@ -13,7 +15,17 @@ const addToStoredDB = (id) => {
   const storedBookData = getStoredBook();
 
   if (storedBookData.includes(id)) {
-    alert("bhai ei id already exist ");
+    toast.warn(" This id already added", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   } else {
     storedBookData.push(id);
     const data = JSON.stringify(storedBookData);
