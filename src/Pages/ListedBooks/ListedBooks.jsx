@@ -13,7 +13,7 @@ const ListedBooks = () => {
   const [readList, setReadList] = useState([]);
   //get data from custom hook useBooks
   const { books } = useBooks();
-  //   console.log(books);
+    // console.log(books);
   useEffect(() => {
     const storedBook = getStoredBook();
     const myReadList = books.filter((book) => storedBook.includes(book.bookId));

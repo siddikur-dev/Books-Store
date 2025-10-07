@@ -5,19 +5,15 @@ import useBooks from "../../hooks/useBooks";
 
 const BookDetails = () => {
   const { bookDetails } = useParams();
-
-  //get data from custom hook useBooks
-  const { books } = useBooks();
-  // string to convert number id number
+  const { books, loading } = useBooks();
   const bookDetailsId = parseInt(bookDetails);
-  console.log("books", books, "bookDetails", bookDetailsId);
-  // const books = useLoaderData();
+
+  // if (loading) return <p>Loading...</p>;
+
   const singleBook = books.find((book) => book.bookId === bookDetailsId);
 
-  // const singleBook = books.filter((book) =>
-  //   bookDetailsId.includes(book.bookId)
-  // );
-  console.log("singleBook", singleBook);
+  if (!singleBook) return <p>No book found</p>;
+
   //   destructure singleBook Object
   const {
     bookName,
@@ -33,7 +29,7 @@ const BookDetails = () => {
     bookId,
   } = singleBook;
   //split review text
-  // const first30Word = review.split(" ").slice(0, 30).join(" ") + "...";
+  const first30Word = review.split(" ").slice(0, 30).join(" ") + "...";
 
   // Mark As Read Function
   const handleMarkAsRead = (id) => {
@@ -67,7 +63,7 @@ const BookDetails = () => {
           <div className="text-gray-600 leading-relaxed">
             <p>
               <span className="font-semibold text-gray-900">Review :</span>{" "}
-              {/* {first30Word} */}h
+              {first30Word}
             </p>
           </div>
 
