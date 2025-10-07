@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/listed-books",
-        Component: ListedBooks,
+        Component: ListedBooks, 
       },
       {
         path: "/pages-to-read",
