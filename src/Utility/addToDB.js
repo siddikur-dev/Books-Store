@@ -89,7 +89,7 @@ const removeReadBookLS = (id) => {
 };
 // 🔹 Remove WishList LS
 const removeWishlistLS = (id) => {
-  const storedBookData = getStoredReadBook();
+  const storedBookData = getStoredWishlistBook();
   const newStoredData = storedBookData.filter((bookId) => bookId !== id);
 
   if (storedBookData.length === newStoredData.length) {
@@ -100,7 +100,7 @@ const removeWishlistLS = (id) => {
       transition: Bounce,
     });
   } else {
-    localStorage.setItem("readList", JSON.stringify(newStoredData));
+    localStorage.setItem("wishList", JSON.stringify(newStoredData));
     toast.success("Book removed successfully!", {
       position: "top-right",
       autoClose: 2000,
