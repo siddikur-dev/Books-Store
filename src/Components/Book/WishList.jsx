@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUser, FaLocationDot, FaBookOpen } from "react-icons/fa6";
 
-const ReadBook = ({ book, handleRemoveReadBook }) => {
+const WishList = ({ book, handleRemoveWishList }) => {
   const {
     bookName,
     author,
@@ -36,7 +36,7 @@ const ReadBook = ({ book, handleRemoveReadBook }) => {
           {tags.map((tag, idx) => (
             <span
               key={idx}
-              className="bg-green-100 text-green-700 font-medium px-3 py-1 rounded-full text-sm"
+              className="bg-pink-100 text-pink-700 font-medium px-3 py-1 rounded-full text-sm"
             >
               #{tag}
             </span>
@@ -67,10 +67,10 @@ const ReadBook = ({ book, handleRemoveReadBook }) => {
             Rating: {rating}
           </span>
           <button
-            onClick={() => handleRemoveReadBook(bookId)}
-            className="btn btn-error text-white px-5 rounded-md text-sm"
+            onClick={() => handleRemoveWishList(bookId)}
+            className="btn btn-warning text-white px-5 rounded-md text-sm"
           >
-            Remove
+            Remove from Wishlist
           </button>
         </div>
       </div>
@@ -78,4 +78,4 @@ const ReadBook = ({ book, handleRemoveReadBook }) => {
   );
 };
 
-export default ReadBook;
+export default WishList;

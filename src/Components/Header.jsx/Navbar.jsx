@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="navbar bg-base-100 shadow-sm px-4 md:px-10">
         {/* Left: Logo */}
         <div className="flex-1">
-          <a className="text-xl md:text-2xl font-bold">Book Vibe</a>
+          <a className="text-xl md:text-2xl font-bold">Books Store</a>
         </div>
 
         {/* Center: Menu */}
